@@ -10,4 +10,9 @@ class MainController extends Controller
     {
         return view('welcome');
     }
+
+    public function home(Request $request)
+    {
+        return 'this is my home';
+    }
 }
