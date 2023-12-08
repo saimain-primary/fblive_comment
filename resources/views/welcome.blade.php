@@ -11,7 +11,7 @@
 
 <body>
     <h1 class="text-3xl font-bold underline">Facebook Login Here</h1>
-    <a href=""></a>
+    <a href="/auth/facebook">Login to facebook</a>
 </body>
 
 </html>
