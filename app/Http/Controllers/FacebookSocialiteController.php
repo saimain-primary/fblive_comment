@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -16,8 +17,9 @@ class FacebookSocialiteController extends Controller
     }
     public function handleCallback(Request $request)
     {
+        Log::info('callback from facebook');
+        Log::debug($request->all());
         try {
-
             $user = Socialite::driver('facebook')->user();
             $findUser = User::where('social_id', $user->id)->first();
             if($findUser) {
@@ -33,7 +35,6 @@ class FacebookSocialiteController extends Controller
                 ]);
 
                 Auth::login($newUser);
-
                 return redirect('/home');
             }
 
